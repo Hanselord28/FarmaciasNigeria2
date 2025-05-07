@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+  <html >
+    <head>
+      <title >Farmacias Nigeria</title>
+      <link rel="icon" href="ress/icono Navegador.png" type="image/png">
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+    </head>
+    <body>
+      <nav > 
+        
+        
+        <div class="nav-wrapper green darken-1 ">
+          <a href="FarmaciasNigeriaWeb.html"> <img class="left" src="ress/Logo Farmacia1.png"  alt="Icono" style="position: relative; left: 5%; top: 5%;" width="150" height="50" > </i></a>
+          
+          <form class="center">
+            <div class="input-field">
+                <input id="search" type="text" placeholder="Buscar..." class="white " style="position:relative; right: 5%;height: 40px; width: 300px;border-radius: 15px;">
+                <label for="search"><i class="material-icons prefix" style="position: relative; left: 2840%; margin-top: 15px; color: gray;">search</i></label>
+               
+
+                <ul class="right">
+                  <li><a href="Log-in.html"><i class="material-icons">account_circle</i></a></li>
+                </ul>
+            </div>
+        </form> 
+          
+
+               
+                
+                
+                
+        </div>
+     </nav>
+
+
+     <div class="cart-container">
+      <h2>Carrito de Compras</h2>
+      <ul id="cart-items">
+        <!-- Cart items will be dynamically added here -->
+      </ul>
+      <div class="cart-total">
+        <span class="label">Total:</span>
+        <span id="cart-total-value">0.00</span>
+      </div>
+      <button id="checkout-button">Finalizar Compra</button>
+    </div>
+
+
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+  let cart = [];
+  let cartTotal = 0;
+
+  // Function to add item to cart
+  function addItemToCart(item) {
+    cart.push(item);
+    cartTotal += item.price;
+    updateCartDisplay();
+  }
+
+  // Function to update the cart display
+  function updateCartDisplay() {
+    const cartItemsElement = document.getElementById('cart-items');
+    const cartTotalValueElement = document.getElementById('cart-total-value');
+
+    cartItemsElement.innerHTML = ''; // Clear existing items
+
+    cart.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = `${item.name} - Precio: ${item.price.toFixed(2)}`; // Format price
+      cartItemsElement.appendChild(li);
+    });
+
+    cartTotalValueElement.textContent = cartTotal.toFixed(2); // Format total
+  }
+
+  // Get all "add" buttons (you're using a button-floating)
+  const addButtons = document.querySelectorAll('.btn-floating'); // Correct selector
+
+  addButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Assuming each button is associated with a specific product
+      const productName = button.getAttribute('data-product-name'); // Get product name from data attribute
+      const productPrice = parseFloat(button.getAttribute('data-product-price')); // Get product price from data attribute
+
+      // Create product object
+      const product = {
+        name: productName,
+        price: productPrice
+      };
+
+      addItemToCart(product);
+    });
+  });
+
+  // Checkout button functionality
+  document.getElementById('checkout-button').addEventListener('click', () => {
+    // Generate receipt
+    const receipt = generateReceipt();
+
+    // Display receipt (you can modify this part to display in a new window, print directly, etc.)
+    alert(receipt);
+  });
+
+  // Function to generate receipt
+  function generateReceipt() {
+    const now = new Date();
+    const dateString = now.toLocaleDateString('es-ES');  // Spanish date format
+    const timeString = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }); // Spanish time format
+
+    let receipt = `
+      **Recibo de Compra**\n
+      Fecha: ${dateString}\n
+      Hora: ${timeString}\n\n`;
+
+    cart.forEach(item => {
+      receipt += `Producto: ${item.name} - Precio: ${item.price.toFixed(2)}\n`;
+    });
+
+    receipt += `\nTotal: ${cartTotal.toFixed(2)}`;
+
+    return receipt;
+  }
+});
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         <footer class="page-footer green darken-1" style="position: fixed; bottom: 0%; left: 0; width: 100%; text-align: left;">
+            <div class="container">
+              <div class="row">
+                <div class="col l6 s12">
+                  <h5 class="white-text">Siguenos!</h5>
+                  
+                </div>
+                <div class="col l4 offset-l2 s12">
+                  <ul>
+                    <li><a class=" grey-text text-lighten-3" href="#!">Facebook</a></li>
+                    <li><a class=" grey-text text-lighten-3" href="#!">Instagram</a></li>
+                    <li><a class=" grey-text text-lighten-3" href="#!">X</a></li>
+                    <li><a class=" grey-text text-lighten-3" href="#!">Arsmate</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="footer-copyright">
+              <div class="container">
+              © 2025 Copyright Text
+              <a class="grey-text text-lighten-4 right" href="#!">Contactanos</a>
+              </div>
+            </div>
+      
+            
+          </footer>
+
+    </body>
+  </html>

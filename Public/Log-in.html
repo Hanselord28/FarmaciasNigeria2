@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title >Farmacias Nigeria</title>
+      <link rel="icon" href="ress/icono Navegador.png" type="image/png">
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+    </head>
+    <body>
+      <nav > 
+        
+        
+        <div class="nav-wrapper green darken-1 ">
+          <a href="FarmaciasNigeriaWeb.html"> <img class="left" src="ress/Logo Farmacia1.png"  alt="Icono" style="position: relative; left: 5%; top: 5%;" width="150" height="50" > </i></a>
+          
+          <form class="center">
+            <div class="input-field">
+                <input id="search" type="text" placeholder="Buscar..." class="white " style="position:relative; right: 5%;height: 40px; width: 300px;border-radius: 15px;">
+                <label for="search"><i class="material-icons prefix" style="position: relative; left: 2840%; margin-top: 15px; color: gray;">search</i></label>
+               
+
+                <ul class="right">
+                  <li><a href="Log-in.html"><i class="material-icons">account_circle</i></a></li>
+                </ul>
+            </div>
+        </form> 
+          
+
+               
+                
+                
+                
+        </div>
+     </nav>
+         <br><br>
+
+
+
+
+
+
+
+
+
+         <div class="z-depth-1 container green lighten-5" style="height: 450px;" >
+            <div class="login-container">
+              <br>
+                <h4 class="center-align green-text text-darken-2">Iniciar Sesión</h4>
+                <br>
+                
+                <div class="container">
+                  <form id="Log">
+                    <div class="input-field">
+                        <input type="email" id="Usuario" required>
+                        <label for="email">Correo Electrónico</label>
+                    </div>
+                    <br>
+                    <div class="input-field ">
+                        <input type="password" id="Contra" required>
+                        <label for="password">Contraseña</label>
+                    </div>
+                    <br><br>
+                    <button type="submit" class=" btn btn-login green darken-1">Ingresar</button>
+                </form>
+                </div>
+                
+                <p class="center-align">
+                    <a href="#" class="green-text text-darken-2">¿Olvidaste tu contraseña?</a>
+                </p>
+            </div>
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        
+         </div>
+
+         <script>
+            document.addEventListener("DOMContentLoaded", function () {
+    const loginForm = document.getElementById("Log"); 
+    
+    loginForm.addEventListener("submit", function (e) {
+        e.preventDefault(); 
+        
+        const email = document.getElementById("Usuario").value;
+        const password = document.getElementById("Contra").value;
+        
+        
+        const usuarioCorrecto = "elPePe@Nigeria.com";
+        const contraseñaCorrecta = "1111";
+        
+        if (email === usuarioCorrecto && password === contraseñaCorrecta) {
+            alert("Inicio de sesión exitoso!");
+            window.location.href = "FarmaciasNigeriaWeb.html";
+        } else {
+            alert("Correo o contraseña incorrectos.");
+        }
+    });
+});
+        </script>
+
+
+
+    </body>
+    <footer class="page-footer green darken-1" style="position: fixed; bottom: 0%; left: 0; width: 100%; text-align: left;">
+        <div class="container">
+          <div class="row">
+            
+            <div class="col l4 offset-l2 s12">
+              <ul>
+                <li><a class=" grey-text text-lighten-3" href="#!">Facebook</a></li>
+                <li><a class=" grey-text text-lighten-3" href="#!">Instagram</a></li>
+                <li><a class=" grey-text text-lighten-3 " href="#!">X</a></li>
+                <li><a class=" grey-text text-lighten-3 " href="#!">Arsmate</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container">
+          © 2025 
+          <a class="grey-text text-lighten-4 right" href="#!">Mas Informacion
+          </a>
+          </div>
+        </div>
+  
+        
+      </footer>
+  </html>
