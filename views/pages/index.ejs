@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+   <%-include('../partials/head') %> 
+  <body>
+    <!-- INCLUDE HEADER -->
+    <%-include('../partials/header') %>
+    <!--SOLO ESA WEA IMPORTA EL HEADER(la navbar)-->
+
+
+    <br><!--<==esta wea es solo un espacio-->
+    <!--AQUI COMIENZA EL CARRUSEL--> 
+    <div class="carousel carousel-slider">
+      <!-- IMAGEN 1 -->
+      <div class="carousel-item green white-text" href="#one!" style="background-image: url('/ress/Banner1.jpeg'); background-size: 100%;">
+        <div class="container">
+          <h2 class="green-text">Oferta Relámpago</h2>
+          <p class="green-text">¡Descuento del 70% en todos los medicamentos!</p>
+          <a class="btn white green-text waves-effect">Ver oferta</a>
+        </div>
+      </div>
+      <!-- IMAGEN 2 -->
+      <div class="carousel-item blue green-text" href="#two!" style="background-image: url('/ress/Banner2.jpeg'); background-size: 100%;">
+        <div class="container">
+          <h2>Todo Genéricos 2x1</h2>
+          <p class="white-text">Lleva 2 productos y paga solo 1</p>
+          <a class="btn white green-text waves-effect">Comprar ahora</a>
+        </div>
+      </div>
+      <!-- IMAGEN 3 -->
+      <div class="carousel-item red green-text" href="#three!" style="background-image: url('/ress/Banner3.jpeg'); background-size: 100%;">
+        <div class="container">
+          <h2>Envío gratis</h2>
+          <p class="green-text">Envío gratis en compras mayores a $50.000</p>
+          <a class="btn white green-text waves-effect">Aprovechar</a>
+        </div>
+      </div>
+    </div>
+
+    <br><br>
+     
+    <div class="container">
+      <div class="z-depth-1 container" style="width: 100%;">
+      <!-- Primera fila -->
+      <div class="row">
+        <!-- Producto 1 -->
+        <div class="col s6 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="/ress/viagra-removebg-preview.png">
+              <span class="card-title green-text" style="height: 20%; width: 100%;">Viagra</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light green darken-1" onclick="M.toast({html: 'elemento añadido al carrito'})">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div>
+              <h4 style="position: relative; top: 0px;">$4.990</h4>
+              <p>100mg 10 comprimidos</p>
+            </div>
+            <div class="card-action green darken-1">
+              <a href="#" class="white-text">Ver Producto</a>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 2 -->
+        <div class="col s6 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="/ress/PARACETAMOL-removebg-preview.png">
+              <span class="card-title green-text" style="height: 20%; width: 100%;">Paracetamol</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light green darken-1" onclick="M.toast({html: 'elemento añadido al carrito'})">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div>
+              <h4 style="position: relative; top: 0px;">$990</h4>
+              <p>500mg 16 comprimidos</p>
+            </div>
+            <div class="card-action green darken-1">
+              <a href="#" class="white-text">Ver Producto</a>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 3 -->
+        <div class="col s6 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="/ress/Slinda.png">
+              <span class="card-title green-text" style="height: 20%; width: 100%;">Drosperidona</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light green darken-1" onclick="M.toast({html: 'elemento añadido al carrito'})">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div>
+              <h4 style="position: relative; top: 0px;">$6.990</h4>
+              <p>4mg 28 comprimidos</p>
+            </div>
+            <div class="card-action green darken-1">
+              <a href="#" class="white-text">Ver Producto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Segunda fila -->
+      <div class="row">
+        <!-- Producto 4 -->
+        <div class="col s6 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="/ress/HipoglucinXD-removebg-preview.png">
+              <span class="card-title green-text" style="height: 20%; width: 100%;">Hipoglucin</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light green darken-1" onclick="M.toast({html: 'elemento añadido al carrito'})">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div>
+              <h4 style="position: relative; top: 0px;">$3.990</h4>
+              <p>750mg 60 comprimidos</p>
+            </div>
+            <div class="card-action green darken-1">
+              <a href="#" class="white-text">Ver Producto</a>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 5 -->
+        <div class="col s6 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="/ress/IBUPROFENO.png">
+              <span class="card-title green-text" style="height: 20%; width: 100%;">Ibuprofeno</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light green darken-1" onclick="M.toast({html: 'elemento añadido al carrito'})">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div>
+              <h4 style="position: relative; top: 0px;">$12.990</h4>
+              <p>600mg 100 comprimidos</p>
+            </div>
+            <div class="card-action green darken-1">
+              <a href="#" class="white-text">Ver Producto</a>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 6 -->
+        <div class="col s6 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="/ress/Ketorolaco-removebg-preview.png">
+              <span class="card-title green-text" style="height: 20%; width: 100%;">Ketorolaco</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light green darken-1" onclick="M.toast({html: 'elemento añadido al carrito'})">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div>
+              <h4 style="position: relative; top: 0px;">$3.990</h4>
+              <p>20mg 30 comprimidos</p>
+            </div>
+            <div class="card-action green darken-1">
+              <a href="#" class="white-text">Ver Producto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Tercera fila -->
+      <div class="row">
+        <!-- Producto 7 -->
+        <div class="col s6 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="/ress/OMEPRAZOL-20MG_Mesa-de-trabajo-1-scaled-removebg-preview.png">
+              <span class="card-title green-text" style="height: 20%; width: 100%;">Omeprazol</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light green darken-1" onclick="M.toast({html: 'elemento añadido al carrito'})">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div>
+              <h4 style="position: relative; top: 0px;">$14.990</h4>
+              <p>20mg 100 comprimidos</p>
+            </div>
+            <div class="card-action green darken-1">
+              <a href="#" class="white-text">Ver Producto</a>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 8 -->
+        <div class="col s6 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="/ress/Vick-removebg-preview.png">
+              <span class="card-title green-text" style="height: 20%; width: 100%;">Vicks VapoRubs</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light green darken-1" onclick="M.toast({html: 'elemento añadido al carrito'})">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div>
+              <h4 style="position: relative; top: 0px;">$7.990</h4>
+              <p>25g</p>
+            </div>
+            <div class="card-action green darken-1">
+              <a href="#" class="white-text">Ver Producto</a>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 9 -->
+        <div class="col s6 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="/ress/THYROZOL-removebg-preview.png">
+              <span class="card-title green-text" style="height: 20%; width: 100%;">Thyrozol</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light green darken-1" onclick="M.toast({html: 'elemento añadido al carrito'})">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
+            <div>
+              <h4 style="position: relative; top: 0px;">$49.990</h4>
+              <p>10mg 50 comprimidos</p>
+            </div>
+            <div class="card-action green darken-1">
+              <a href="#" class="white-text">Ver Producto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- INCLUDE FOOTER -->
+    <%-include('../partials/footer') %>
+    <!--Y ESTA WEA INCLUYE EL FOOTER-->
+
+    <!-- Scripts al final para optimizar carga [IGNORA ESTAS WEAS VIENEN CON MATERIALIZE]-->
+    <script type="text/javascript" src="/js/materialize.js"></script>
+    <script type="text/javascript" src="/js/Pharmacy.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.carousel');
+        var instances = M.Carousel.init(elems, {
+          fullWidth: true,
+          indicators: true,
+          duration: 200
+        });
+        setInterval(function() {
+          var instance = M.Carousel.getInstance(elems[0]);
+          instance.next();
+        }, 5000);
+      });
+    </script>
+  </body>
+</html>
