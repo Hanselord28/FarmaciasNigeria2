@@ -1,26 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Farmacias Nigeria</title>
-    <link rel="icon" href="/ress/icono Navegador.png" type="image/png">
-
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="/css/materialize.css"  media="screen,projection"/>
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  </head>
+   <%-include('../partials/head') %> 
   <body>
     <!-- INCLUDE HEADER -->
-    <% include('../partials/header') %>
+    <%-include('../partials/header') %>
+    <!--SOLO ESA WEA IMPORTA EL HEADER(la navbar)-->
 
 
-    <br>
-     
+    <br><!--<==esta wea es solo un espacio-->
+    <!--AQUI COMIENZA EL CARRUSEL--> 
     <div class="carousel carousel-slider">
-      <!-- Banner 1 -->
+      <!-- IMAGEN 1 -->
       <div class="carousel-item green white-text" href="#one!" style="background-image: url('/ress/Banner1.jpeg'); background-size: 100%;">
         <div class="container">
           <h2 class="green-text">Oferta Relámpago</h2>
@@ -28,7 +18,7 @@
           <a class="btn white green-text waves-effect">Ver oferta</a>
         </div>
       </div>
-      <!-- Banner 2 -->
+      <!-- IMAGEN 2 -->
       <div class="carousel-item blue green-text" href="#two!" style="background-image: url('/ress/Banner2.jpeg'); background-size: 100%;">
         <div class="container">
           <h2>Todo Genéricos 2x1</h2>
@@ -36,7 +26,7 @@
           <a class="btn white green-text waves-effect">Comprar ahora</a>
         </div>
       </div>
-      <!-- Banner 3 -->
+      <!-- IMAGEN 3 -->
       <div class="carousel-item red green-text" href="#three!" style="background-image: url('/ress/Banner3.jpeg'); background-size: 100%;">
         <div class="container">
           <h2>Envío gratis</h2>
@@ -48,7 +38,8 @@
 
     <br><br>
      
-    <div class="z-depth-1 container" style="width: 100%;">
+    <div class="container">
+      <div class="z-depth-1 container" style="width: 100%;">
       <!-- Primera fila -->
       <div class="row">
         <!-- Producto 1 -->
@@ -230,11 +221,13 @@
         </div>
       </div>
     </div>
+    </div>
 
     <!-- INCLUDE FOOTER -->
-    <% include('../partials/footer') %>
+    <%-include('../partials/footer') %>
+    <!--Y ESTA WEA INCLUYE EL FOOTER-->
 
-    <!-- Scripts al final para optimizar carga -->
+    <!-- Scripts al final para optimizar carga [IGNORA ESTAS WEAS VIENEN CON MATERIALIZE]-->
     <script type="text/javascript" src="/js/materialize.js"></script>
     <script type="text/javascript" src="/js/Pharmacy.js"></script>
     <script>
