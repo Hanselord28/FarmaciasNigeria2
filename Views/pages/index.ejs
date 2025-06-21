@@ -21,52 +21,47 @@
 
     <header>
       <nav > 
-        <div class="nav-wrapper green darken-1 ">
-          <a href="FarmaciasNigeriaWeb.html"> <img class="left" src="ress/Logo Farmacia1.png"  alt="Icono" style="position: relative; left: 5%; top: 5%;" width="150" height="50" > </i></a>
-          
-          <form class="center" style="flex: 1; max-width: 400px; margin: 0 1rem; position: relative; display: flex; align-items: center;">
-  <!-- Contenedor input-field necesario para Materialize -->
-  <div class="input-field" style="flex: 1; margin: 0;">
-    <!-- Icono prefix dentro del input -->
-    <i class="material-icons prefix grey-text" style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%);">
-      search
-    </i>
-    <!-- Input de búsqueda -->
-    <input
-      id="search"
-      type="search"
-      placeholder="Buscar..."
-      required
-      class="white"
-      style="
-        width: 100%;
-        height: 40px;
-        padding-left: 2.5rem;
-        border-radius: 15px;
-        border: none;
-        box-shadow: none;
-      "
-    />
-    <label class="label-icon" for="search"></label>
+        <!-- HTML -->
+<nav class="green accent-4">
+  <div class="nav-wrapper container">
+    <!-- Logo + nombre -->
+    <a href="FarmaciasNigeriaWeb.html" class="brand-logo" aria-label="Inicio">
+      <img src="ress/Logo Farmacia1.png" alt="Logo Farmacias Nigeria" class="logo">
+      <span class="site-name">Farmacias Nigeria</span>
+    </a>
+
+    <!-- Buscador centrado -->
+    <form class="search-form">
+      <div class="input-field">
+        <i class="material-icons prefix">search</i>
+        <input id="search" type="search" placeholder="Buscar medicamentos…" required aria-label="Buscar medicamentos">
+        <label class="label-icon" for="search"></label>
+      </div>
+    </form>
+
+    <!-- Íconos y menú móvil -->
+    <ul class="right nav-icons">
+      <li><a href="Log-in.html" aria-label="Ingresar"><i class="material-icons">account_circle</i></a></li>
+      <li><a href="Carrito.html" aria-label="Ver carrito"><i class="material-icons">shopping_cart</i></a></li>
+      <li><a href="#" data-target="mobile-menu" class="sidenav-trigger" aria-label="Abrir menú"><i class="material-icons">menu</i></a></li>
+    </ul>
   </div>
+</nav>
 
-  <!-- Íconos de usuario y carrito al lado derecho del form -->
-  <ul class="right" style="display: flex; align-items: center; margin: 0;">
-    <li style="margin-left: 1rem;">
-      <a href="Log-in.html">
-        <i class="material-icons white-text">account_circle</i>
-      </a>
-    </li>
-    <li style="margin-left: 0.5rem;">
-      <a href="Carrito.html">
-        <i class="material-icons white-text">shopping_cart</i>
-      </a>
-    </li>
-  </ul>
-</form>
+<!-- Menú lateral para móviles -->
+<ul class="sidenav" id="mobile-menu">
+  <li><a href="FarmaciasNigeriaWeb.html">Inicio</a></li>
+  <li><a href="Log-in.html">Ingresar</a></li>
+  <li><a href="Carrito.html">Carrito</a></li>
+</ul>
 
-        </div>
-     </nav>
+<!-- JS de inicialización -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    M.Sidenav.init(document.querySelectorAll('.sidenav'));
+  });
+</script>
+
     </header>
 
     <body>
@@ -129,40 +124,27 @@
   <div class="row">
     <!-- Sidebar -->
     <div class="col s12 m4 l3">
-      <div class="card hoverable">
-        <div class="card-content">
-          <span class="card-title">Categorías</span>
-          <ul class="collection">
-            <li class="collection-item"><a href="#!">Analgésicos</a></li>
-            <li class="collection-item"><a href="#!">Antigripales</a></li>
-            <li class="collection-item"><a href="#!">Digestivos</a></li>
-            <li class="collection-item"><a href="#!">Vitaminas</a></li>
-          </ul>
-
-          <div style="margin-top: 1rem;">
-            <span class="card-title">Precio</span>
-            <p>
-              <label>
-                <input name="price" type="radio" checked />
-                <span>Menos de $5.000</span>
-              </label>
-            </p>
-            <p>
-              <label>
-                <input name="price" type="radio" />
-                <span>$5.000 – $10.000</span>
-              </label>
-            </p>
-            <p>
-              <label>
-                <input name="price" type="radio" />
-                <span>Más de $10.000</span>
-              </label>
-            </p>
-          </div>
-        </div>
+  <div class="card hoverable">
+    <div class="card-content">
+      <!-- Buscador de categorías -->
+      <div class="input-field">
+        <i class="material-icons prefix">search</i>
+        <input id="sidebar-search" type="text" placeholder="Buscar categoría" />
+        <label for="sidebar-search">Buscar</label>
       </div>
+
+      <!-- Título y listado -->
+      <span class="card-title">Categorías</span>
+      <ul class="collection">
+        <li class="collection-item"><a href="#!">Analgésicos</a></li>
+        <li class="collection-item"><a href="#!">Antigripales</a></li>
+        <li class="collection-item"><a href="#!">Digestivos</a></li>
+        <li class="collection-item"><a href="#!">Vitaminas</a></li>
+      </ul>
     </div>
+  </div>
+</div>
+
 
     <!-- Productos -->
     <div class="col s12 m8 l9">
@@ -170,8 +152,128 @@
         <!-- Aquí tus cards de productos -->
         <div class="col s12 m6 l4">
           <div class="card hoverable">
-            <div class="card-image" style="height:200px; overflow:hidden;">
-              <img src="ress/viagra-removebg-preview.png" alt="Viagra" style="width:100%; height:100%; object-fit:cover;">
+            <div class="card-image" style="height:200px;">
+              <img src="ress/viagra-removebg-preview.png" alt="Viagra" style="width:50%; height: 100%; object-fit:cover;">
+              <span class="card-title green-text truncate" style="background: rgba(255,255,255,0.8); padding:4px; border-radius:4px;">
+                Viagra
+              </span>
+              <a class="btn-floating halfway-fab waves-effect waves-light green darken-1"
+                 onclick="M.toast({html: '¡Añadido al carrito!'})">
+                <i class="material-icons">add_shopping_cart</i>
+              </a>
+            </div>
+            <div class="card-content">
+              <h5 class="green-text" style="margin:0;">$4.990</h5>
+              <p class="grey-text text-darken-1" style="font-size:0.9rem; margin-top:4px;">
+                100 mg • 10 comprimidos
+              </p>
+            </div>
+            <div class="card-action">
+              <a href="#" class="green-text text-darken-2">Ver producto</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+          <div class="card hoverable">
+            <div class="card-image" style="height:200px;">
+              <img src="ress/PARACETAMOL-removebg-preview.png" alt="Viagra" style="width:50%; height: 100%; object-fit:cover;">
+              <span class="card-title green-text truncate" style="background: rgba(255,255,255,0.8); padding:4px; border-radius:4px;">
+                Viagra
+              </span>
+              <a class="btn-floating halfway-fab waves-effect waves-light green darken-1"
+                 onclick="M.toast({html: '¡Añadido al carrito!'})">
+                <i class="material-icons">add_shopping_cart</i>
+              </a>
+            </div>
+            <div class="card-content">
+              <h5 class="green-text" style="margin:0;">$4.990</h5>
+              <p class="grey-text text-darken-1" style="font-size:0.9rem; margin-top:4px;">
+                100 mg • 10 comprimidos
+              </p>
+            </div>
+            <div class="card-action">
+              <a href="#" class="green-text text-darken-2">Ver producto</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+          <div class="card hoverable">
+            <div class="card-image" style="height:200px;">
+              <img src="ress/viagra-removebg-preview.png" alt="Viagra" style="width:50%; height: 100%; object-fit:cover;">
+              <span class="card-title green-text truncate" style="background: rgba(255,255,255,0.8); padding:4px; border-radius:4px;">
+                Viagra
+              </span>
+              <a class="btn-floating halfway-fab waves-effect waves-light green darken-1"
+                 onclick="M.toast({html: '¡Añadido al carrito!'})">
+                <i class="material-icons">add_shopping_cart</i>
+              </a>
+            </div>
+            <div class="card-content">
+              <h5 class="green-text" style="margin:0;">$4.990</h5>
+              <p class="grey-text text-darken-1" style="font-size:0.9rem; margin-top:4px;">
+                100 mg • 10 comprimidos
+              </p>
+            </div>
+            <div class="card-action">
+              <a href="#" class="green-text text-darken-2">Ver producto</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+          <div class="card hoverable">
+            <div class="card-image" style="height:200px;">
+              <img src="ress/viagra-removebg-preview.png" alt="Viagra" style="width:50%; height: 100%; object-fit:cover;">
+              <span class="card-title green-text truncate" style="background: rgba(255,255,255,0.8); padding:4px; border-radius:4px;">
+                Viagra
+              </span>
+              <a class="btn-floating halfway-fab waves-effect waves-light green darken-1"
+                 onclick="M.toast({html: '¡Añadido al carrito!'})">
+                <i class="material-icons">add_shopping_cart</i>
+              </a>
+            </div>
+            <div class="card-content">
+              <h5 class="green-text" style="margin:0;">$4.990</h5>
+              <p class="grey-text text-darken-1" style="font-size:0.9rem; margin-top:4px;">
+                100 mg • 10 comprimidos
+              </p>
+            </div>
+            <div class="card-action">
+              <a href="#" class="green-text text-darken-2">Ver producto</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+          <div class="card hoverable">
+            <div class="card-image" style="height:200px;">
+              <img src="ress/viagra-removebg-preview.png" alt="Viagra" style="width:50%; height: 100%; object-fit:cover;">
+              <span class="card-title green-text truncate" style="background: rgba(255,255,255,0.8); padding:4px; border-radius:4px;">
+                Viagra
+              </span>
+              <a class="btn-floating halfway-fab waves-effect waves-light green darken-1"
+                 onclick="M.toast({html: '¡Añadido al carrito!'})">
+                <i class="material-icons">add_shopping_cart</i>
+              </a>
+            </div>
+            <div class="card-content">
+              <h5 class="green-text" style="margin:0;">$4.990</h5>
+              <p class="grey-text text-darken-1" style="font-size:0.9rem; margin-top:4px;">
+                100 mg • 10 comprimidos
+              </p>
+            </div>
+            <div class="card-action">
+              <a href="#" class="green-text text-darken-2">Ver producto</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+          <div class="card hoverable">
+            <div class="card-image" style="height:200px;">
+              <img src="ress/viagra-removebg-preview.png" alt="Viagra" style="width:50%; height: 100%; object-fit:cover;">
               <span class="card-title green-text truncate" style="background: rgba(255,255,255,0.8); padding:4px; border-radius:4px;">
                 Viagra
               </span>
@@ -192,38 +294,11 @@
           </div>
         </div>
         <!-- Repite más tarjetas según necesites -->
+         
       </div>
     </div>
   </div>
 </div>
-
-
-    
-      
-    
-            
-      
-
-
-
-
-        
-
-        
-        
-        
-     
-
-        
-            
-        
-            
-
-
-
-
-      
-
 
 
 
@@ -234,7 +309,7 @@
 
 
       <!-- Footer mejorado -->
-<footer class="page-footer green darken-2">
+<footer class="page-footer green accent-5">
   <div class="container">
     <div class="row">
       <!-- Información de contacto -->
@@ -268,7 +343,7 @@
       </div>
     </div>
   </div>
-  <div class="green darken-3">
+  <div class="green accent-5">
     <div class="container center white-text" style="padding: 8px 0;">
       © 2025 Farmacias Nigeria. Todos los derechos reservados.
       <a class="grey-text text-lighten-4 right" href="#!">Política de Privacidad</a>
