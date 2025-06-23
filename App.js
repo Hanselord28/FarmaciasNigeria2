@@ -52,6 +52,18 @@ app.post("/post", (req, res) => {
   });
 });
 
+// Ruta para procesar pagos de mercado pago
+// Esta ruta recibe los datos del pago y los procesa
+app.post('/process_payment', express.json(), async (req, res) => {
+  try {
+    const result = await payment.create({ body: req.body });
+    res.json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al procesar el pago', details: error.message });
+  }
+});
+
 // Rutas de páginas
 app.get('/log-in', (req, res) => {//<<<<<<========== esta es la ruta que se usa en un href (href="/Log-in") los demas funcionan igual)
   res.render('pages/Log-in'); // Renderiza views/pages/Log-in.ejs
@@ -74,4 +86,41 @@ app.get('/registroproductos', (req, res) => {
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});
+
+
+// ...existing code...
+
+//BACKEND MERCADOPAGO
+const { MercadoPagoConfig, Payment } = require('mercadopago');
+
+// Configuración de Mercado Pago
+
+const client = new MercadoPagoConfig({ accessToken: 'TEST-6644854260003021-062223-8d2ea44b8657c6e5f62183eed748c331-233977689' });
+const payment = new Payment(client);
+
+// ...existing code...
+
+const { Preference } = require('mercadopago');
+
+// Ruta para crear un preferenceId
+app.post('/create_preference', express.json(), async (req, res) => {
+  try {
+    const preference = await new Preference(client).create({
+      body: {
+        items: [
+          {
+            title: "Compra en Farmacias Nigeria",
+            quantity: 1,
+            unit_price: Number(req.body.amount) || 10000,
+            currency_id: "CLP"
+          }
+        ]
+      }
+    });
+    res.json({ preferenceId: preference.id });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'No se pudo crear el preferenceId', details: error.message });
+  }
 });
