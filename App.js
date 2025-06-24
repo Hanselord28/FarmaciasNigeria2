@@ -71,6 +71,8 @@ app.post('/process_payment', express.json(), async (req, res) => {
   }
 });
 
+
+
 // Rutas de páginas
 app.get('/log-in', (req, res) => {//<<<<<<========== esta es la ruta que se usa en un href (href="/Log-in") los demas funcionan igual)
   res.render('pages/Log-in'); // Renderiza views/pages/Log-in.ejs
@@ -94,6 +96,10 @@ app.get('/preinicio', (req, res) => {
 
 app.get('/registroUsuario', (req, res) => {
   res.render('pages/registroUsuario'); // Renderiza views/pages/contacto.ejs
+});
+
+app.get('/index', (req, res) => {
+  res.render('pages/index'); // Renderiza views/pages/contacto.ejs
 });
 
 
