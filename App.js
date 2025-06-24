@@ -51,6 +51,13 @@ app.post("/post", (req, res) => {
     res.redirect('/home');
   });
 });
+// Ruta para el registro de usuario
+app.post('/register', (req, res) => {
+  const { usuario, correo, password } = req.body;
+  // Aquí procesas el registro (guardar en la base de datos, etc.)
+  res.send('¡Usuario registrado!');
+});
+
 
 // Ruta para procesar pagos de mercado pago
 // Esta ruta recibe los datos del pago y los procesa
@@ -69,7 +76,7 @@ app.get('/log-in', (req, res) => {//<<<<<<========== esta es la ruta que se usa 
   res.render('pages/Log-in'); // Renderiza views/pages/Log-in.ejs
 });
 
-app.get('/carrito', (req, res) => {//cuando llamen a /carrito, se renderiza la direccción de la vista /pages/Carrito.ejs
+app.get('/Carrito', (req, res) => {//cuando llamen a /carrito, se renderiza la direccción de la vista /pages/Carrito.ejs
   res.render('pages/Carrito'); // Renderiza views/pages/Carrito.ejs
 });
 
@@ -79,6 +86,14 @@ app.get('/vistametodopago', (req, res) => {
 
 app.get('/registroproductos', (req, res) => {
   res.render('pages/RegistroProductos'); // Renderiza views/pages/RegistroProductos.ejs
+});
+
+app.get('/preinicio', (req, res) => {
+  res.render('pages/preinicio'); // Renderiza views/preinicio.ejs
+});
+
+app.get('/registroUsuario', (req, res) => {
+  res.render('pages/registroUsuario'); // Renderiza views/pages/contacto.ejs
 });
 
 

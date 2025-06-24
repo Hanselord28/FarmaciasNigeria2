@@ -9132,4 +9132,9 @@ input[type=range]::-ms-thumb {
   .nav-icons li {
     margin-left: 1rem;
   }
+
+  .card-image img {
+  display: block;
+  margin: 0 auto;
+}
 }
