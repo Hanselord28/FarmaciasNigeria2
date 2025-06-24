@@ -4,54 +4,64 @@
     <body>
         <%- include('../partials/header') %>
         <div class="container">
-            <div class="container">
-            <h1>Registro de Productos</h1>
+    <div class="card z-depth-2">
+        <div class="card-content">
+            <span class="card-title blue-text text-darken-2 center-align">Registro de Productos</span>
             <form action="/post" method="POST">
-                <div class="form-group">
+                <div class="input-field">
+                    <input id="NombreProducto" name="NombreProducto" type="text" class="validate" required>
                     <label for="NombreProducto">Nombre del Producto</label>
-                    <input type="text" class="form-control" id="NombreProducto" name="NombreProducto" required>
                 </div>
-                <div class="form-group">
+                <div class="input-field">
+                    <input id="Precio" name="Precio" type="number" class="validate" required>
                     <label for="Precio">Precio</label>
-                    <input type="number" class="form-control" id="Precio" name="Precio" required>
                 </div>
-                <div class="form-group">
+                <div class="input-field">
+                    <input id="Cantidad" name="Cantidad" type="number" class="validate" required>
                     <label for="Cantidad">Cantidad</label>
-                    <input type="number" class="form-control" id="Cantidad" name="Cantidad" required>
                 </div>
-                <div class="form-group">
+                <div class="input-field">
+                    <textarea id="Descripcion" name="Descripcion" class="materialize-textarea" required></textarea>
                     <label for="Descripcion">Descripción</label>
-                    <textarea class="form-control" id="Descripcion" name="Descripcion" rows="3" required></textarea>
                 </div>
-                <button type="submit" class="btn waves-effect waves-light green btn-primary">Registrar Producto</button>
+                <button type="submit" class="btn waves-effect waves-light green accent-4 right">
+                    Registrar Producto
+                </button>
             </form>
         </div>
-        <!--tabla productos -->
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre del Producto</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Descripción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% if (typeof productos !== 'undefined' && Array.isArray(productos)) { %>
-                    <% productos.forEach(producto => { %>
-                        <tr>
-                            <td><%= producto.id %></td>
-                            <td><%= producto.NombreProducto %></td>
-                            <td><%= producto.Precio %></td>
-                            <td><%= producto.Cantidad %></td>
-                            <td><%= producto.Descripcion %></td>
-                        </tr>
-                    <% }) %>
-                <% } %>
-            </tbody>
-        </table>
+    </div>
+
+    <!-- Tabla productos -->
+    <div class="card z-depth-1">
+        <div class="card-content">
+            <table class="highlight responsive-table centered">
+                <thead class="blue lighten-1 white-text">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre del Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (typeof productos !== 'undefined' && Array.isArray(productos)) { %>
+                        <% productos.forEach(producto => { %>
+                            <tr>
+                                <td><%= producto.id %></td>
+                                <td><%= producto.NombreProducto %></td>
+                                <td><%= producto.Precio %></td>
+                                <td><%= producto.Cantidad %></td>
+                                <td><%= producto.Descripcion %></td>
+                            </tr>
+                        <% }) %>
+                    <% } %>
+                </tbody>
+            </table>
         </div>
+    </div>
+</div>
+
         <%- include('../partials/footer') %>
         <script src="/js/script.js"></script>
     </body>

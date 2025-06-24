@@ -1,7 +1,8 @@
-const express = require('express');
-const path = require('path');
-const app = express();
-const oMysql = require('mysql'); 
+const express = require('express');// Importa el framework Express
+const path = require('path');// Importa el módulo path para manejar rutas de archivos
+const app = express();// Para crear la aplicación Express
+const oMysql = require('mysql'); // Para manejar la conexión a MySQL
+const session = require('express-session');// Para manejar sesiones
 
 // Conexión MySQL
 const oConexion = oMysql.createConnection({
@@ -18,6 +19,19 @@ app.use(express.urlencoded({ extended: true })); // Para recibir datos de formul
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'Public')));
+
+// Configuración de sesión
+app.use(session({
+  secret: 'tu_clave_secreta',
+  resave: false,
+  saveUninitialized: false
+}));
+
+//LogOut 
+app.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/log-in');
+});
 
 // Ruta principal
 app.get('/', (req, res) => {
@@ -57,19 +71,28 @@ app.post('/register', (req, res) => {
   // Aquí procesas el registro (guardar en la base de datos, etc.)
   res.send('¡Usuario registrado!');
 });
+//ruta  POST para el registro de usuario
+const bcrypt = require('bcryptjs');
 
+app.post('/registro', (req, res) => {
+  const { nombre, correo, password } = req.body;
+  const hash = bcrypt.hashSync(password, 8);
 
-// Ruta para procesar pagos de mercado pago
-// Esta ruta recibe los datos del pago y los procesa
-app.post('/process_payment', express.json(), async (req, res) => {
-  try {
-    const result = await payment.create({ body: req.body });
-    res.json(result);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al procesar el pago', details: error.message });
-  }
+  oConexion.query('INSERT INTO usuarios (nombre, correo, password) VALUES (?, ?, ?)', 
+    [nombre, correo, hash], 
+    (error, results) => {
+      if (error) {
+        // Manejo de errores
+        return res.send('Error al registrar');
+      }
+      res.redirect('/log-in');
+    });
 });
+
+
+
+
+//======================================================================================================================
 
 // Rutas de páginas
 app.get('/log-in', (req, res) => {//<<<<<<========== esta es la ruta que se usa en un href (href="/Log-in") los demas funcionan igual)
@@ -96,7 +119,11 @@ app.get('/registroUsuario', (req, res) => {
   res.render('pages/registroUsuario'); // Renderiza views/pages/contacto.ejs
 });
 
+app.get('/index', (req, res) => {
+  res.render('pages/index'); // Renderiza views/pages/contacto.ejs
+});
 
+//===================================================================================================================
 // Puerto y servidor
 const PORT = 3000;
 app.listen(PORT, () => {
@@ -104,7 +131,7 @@ app.listen(PORT, () => {
 });
 
 
-// ...existing code...
+
 
 //BACKEND MERCADOPAGO
 const { MercadoPagoConfig, Payment } = require('mercadopago');
@@ -114,7 +141,26 @@ const { MercadoPagoConfig, Payment } = require('mercadopago');
 const client = new MercadoPagoConfig({ accessToken: 'TEST-6644854260003021-062223-8d2ea44b8657c6e5f62183eed748c331-233977689' });
 const payment = new Payment(client);
 
-// ...existing code...
+
+// Ruta para procesar pagos de mercado pago
+// Esta ruta recibe los datos del pago y los procesa
+app.post('/process_payment', express.json(), async (req, res) => {
+  console.log('Body recibido:', req.body); 
+  try {
+    const result = await payment.create({ body: req.body });
+    res.json(result);
+  } catch (error) {
+    console.error('Error Mercado Pago:', error);
+    res.status(500).json({ 
+      error: 'Error al procesar el pago', 
+      details: error.message || 'Sin mensaje',
+      error_full: error 
+    });
+  }
+});
+
+
+// Importa las clases necesarias de Mercado Pago
 
 const { Preference } = require('mercadopago');
 

@@ -4,104 +4,104 @@
 <body>
   <%- include('../partials/header') %>
 
-  <div class="card">
-  <div class="card-content">
-    <span class="card-title">Productos Seleccionados</span>
+  <div class="container" style="margin-top: 2rem;">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Productos Seleccionados</span>
 
-    <table class="striped responsive-table">
-      <thead class="green accent-4">
-        <tr>
-          <th>Producto</th>
-          <th>Precio Unitario</th>
-          <th>Cantidad</th>
-          <th>Total</th>
-          <th>Acción</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!--
-          Repite este <tr> por cada ítem del carrito,
-          o bien úsalo como plantilla si vas a renderizar dinámicamente
-        -->
-        <tr>
-          <td>Nombre del Producto</td>
-          <td>$10.000</td>
-          <td>2</td>
-          <td>$20.000</td>
-          <td>
-            <a class="btn-small green accent-4 white-text" href="#eliminar">
-              Eliminar
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+        <ul id="cart-items" class="collection">
+          <!-- Se rellenará dinámicamente -->
+        </ul>
 
-    <div class="right-align" style="margin-top: 20px;">
-      <h6>
-        <strong>Total a pagar:</strong>
-        <span class="pink-text text-lighten-2">$20.000</span>
-      </h6>
-      <a href="/vistametodopago" class="btn green accent-4 white-text" href="#finalizar-compra">
-        Finalizar Compra
-        <i class="material-icons right">payment</i>
-      </a>
+        <div class="right-align" style="margin-top: 20px;">
+          <h6>
+            <strong>Total a pagar: </strong>
+            <span id="cart-total-value" class="pink-text text-lighten-2">$0.00</span>
+          </h6>
+          <a id="checkout-button" href="/vistametodopago" class="btn green accent-4 white-text">
+            Finalizar Compra
+            <i class="material-icons right">payment</i>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
 
   <%- include('../partials/footer') %>
 
   <!-- Scripts -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      let cart = [];
-      let cartTotal = 0;
+      // Recupera carrito de localStorage o inicializa vacío
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let cartTotal = cart.reduce((sum, item) => sum + item.price, 0);
 
-      function addItemToCart(item) {
-        cart.push(item);
-        cartTotal += item.price;
-        updateCartDisplay();
-      }
+      const cartItemsElement      = document.getElementById('cart-items');
+      const cartTotalValueElement = document.getElementById('cart-total-value');
+      const checkoutButton        = document.getElementById('checkout-button');
 
       function updateCartDisplay() {
-        const cartItemsElement = document.getElementById('cart-items');
-        const cartTotalValueElement = document.getElementById('cart-total-value');
         cartItemsElement.innerHTML = '';
-        cart.forEach(item => {
+        if (cart.length === 0) {
           const li = document.createElement('li');
-          li.className = 'collection-item';
-          li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+          li.className = 'collection-item center-align';
+          li.textContent = 'Tu carrito está vacío';
           cartItemsElement.appendChild(li);
-        });
-        cartTotalValueElement.textContent = cartTotal.toFixed(2);
+        } else {
+          cart.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.className = 'collection-item';
+            li.innerHTML = `
+              ${item.name} - $${item.price.toFixed(2)}
+              <a href="#!" class="secondary-content btn-flat remove-item" data-index="${index}">
+                <i class="material-icons red-text">delete</i>
+              </a>
+            `;
+            cartItemsElement.appendChild(li);
+          });
+        }
+        cartTotalValueElement.textContent = `$${cartTotal.toFixed(2)}`;
       }
 
-      document.querySelectorAll('.btn-floating').forEach(button => {
-        button.addEventListener('click', () => {
-          const productName = button.dataset.productName;
-          const productPrice = parseFloat(button.dataset.productPrice);
-          addItemToCart({ name: productName, price: productPrice });
-          M.toast({ html: '¡Añadido al carrito!' });
-        });
+      function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+      }
+
+      // Eliminar un ítem
+      cartItemsElement.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-item')) {
+          const idx = parseInt(e.target.closest('.remove-item').dataset.index, 10);
+          cartTotal -= cart[idx].price;
+          cart.splice(idx, 1);
+          saveCart();
+          updateCartDisplay();
+        }
       });
 
-      document.getElementById('checkout-button').addEventListener('click', () => {
-        alert(generateReceipt());
-      });
-
-      function generateReceipt() {
+      // Finalizar compra
+      checkoutButton.addEventListener('click', () => {
+        if (cart.length === 0) {
+          M.toast({ html: 'Tu carrito está vacío' });
+          return;
+        }
         const now = new Date();
         const dateString = now.toLocaleDateString('es-ES');
         const timeString = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
-        let receipt = `**Recibo de Compra**\nFecha: ${dateString}\nHora: ${timeString}\n\n`;
+        let receipt = `Recibo de Compra\nFecha: ${dateString}\nHora: ${timeString}\n\n`;
         cart.forEach(item => {
           receipt += `Producto: ${item.name} - $${item.price.toFixed(2)}\n`;
         });
         receipt += `\nTotal: $${cartTotal.toFixed(2)}`;
-        return receipt;
-      }
+        alert(receipt);
+        // Limpia carrito
+        cart = [];
+        cartTotal = 0;
+        saveCart();
+        updateCartDisplay();
+      });
+
+      // Inicializa la vista
+      updateCartDisplay();
     });
   </script>
 </body>
