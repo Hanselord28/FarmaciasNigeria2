@@ -77,6 +77,7 @@ async function renderPaymentBrick(bricksBuilder, preferenceId) {
                 reject();
               } else {
                 alert("Pago exitoso o enviado para procesar.");
+                res.window.location.href = "/pagoexitoso"; // Redirige a una página de éxito
                 resolve();
               }
             })

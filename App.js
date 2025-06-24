@@ -123,6 +123,10 @@ app.get('/index', (req, res) => {
   res.render('pages/index'); // Renderiza views/pages/contacto.ejs
 });
 
+app.get('/pagoexitoso', (req, res) => {
+  res.render('pages/PagoExitoso'); // Renderiza views/pages/contacto.ejs 
+});
+
 //===================================================================================================================
 // Puerto y servidor
 const PORT = 3000;
